@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 {% block conteudo %}
                     <div class="container">
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -17,15 +18,13 @@
                                 <form method="post" enctype="multipart/form-data">
                                     <div class="form-row">
                                         {% csrf_token %}
-                                        <div>
-                                            {% for field in form %}
-                                            <label class="form-group col-md-12">
-                                                {{field.label}}
-                                            </label>
-                                            {%endfor%}
+                                        {% for field in form %}
+                                        <div class="form-group col-md-12">
+                                            <label>{{field.label}} {% if field.field.required%}*{% endif %}</label>
+                                            {% render_field field placeholder=field.label class='form-control' %} 
                                         </div>
+                                        {%endfor%}
                                     </div>
-                    
                                     <div class="text-right">
                                         <button class="btn btn-primary" type="submit">
                                             <span class="text">Registrar visitante</span>
