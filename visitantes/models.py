@@ -44,6 +44,8 @@ class Visitante(models.Model):
         if self.placa_veiculo:
            return self.placa_veiculo
         
+        
+        
     def get_cpf(self):
         if self.cpf:
             cpf = str(self.cpf)
@@ -63,3 +65,4 @@ class Visitante(models.Model):
 
     def __str__(self):
         return self.nome_completo
+

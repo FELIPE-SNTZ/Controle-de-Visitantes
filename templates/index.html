@@ -129,7 +129,7 @@
               <td>{{x.get_horario_autorizacao}}</td>
               <td>{{x.get_morador_responsavel}}</td>
               <td>
-                <a href="{% url 'informacoes_visitante' %}"> Ver informações </a>
+                <a href="{% url 'informacoes_visitante' pk=x.id %}"> Ver informações </a>
               </td>
             </tr>
             {% endfor%}
