@@ -1,7 +1,9 @@
+from apps.apartamento.views import apartamento
 from apps.dashboard.views import index
 from django.contrib import admin
 from django.urls import path, include
 from apps.visitantes.views import registrar_visitante, informacoes_visitante,finalizar_visita
+from apps.morador.views import morador
 from django.contrib.auth.views import LoginView,LogoutView
 from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 
@@ -9,6 +11,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name='index'),
+    path('morador/',morador,name='morador'),
+    path('apartamento/',apartamento,name='apartamento'),
     
     
 

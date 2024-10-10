@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from datetime import timedelta
 import os
 from pathlib import Path
 import sys
@@ -65,8 +66,21 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     )
 }
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5), # tempo de vida do token de acesso 5mim se expira
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),# tenpo de vida do refresh valido po 1 dia para renovação
+    "JTI_CLAIM": "jti", # indentificador único do token para o controle e renovação.
+    'SLIDING_TOKEN_LIFETIME': timedelta(days=1),# slinding token renova automaticamente e dura até 1 dia
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),# refresh para usuários inativos, válido por 1 dia
+}
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
