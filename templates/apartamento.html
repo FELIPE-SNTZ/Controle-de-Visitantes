@@ -13,17 +13,16 @@
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
-            <th>Nome completo</th>
-            <th>CPF</th>
-            <th>Horário de chegada</th>
-            <th>Horário da autorização</th>
+            <th>Número do Apartamento</th>
+            <th>Bloco</th>
+            <th>Vagas de Estacionamento</th>
             <th>Autorizado por</th>
             <th>Mais informações</th>
           </thead>
 
           <tbody>
             <tr>
-              {% for x in todos_visitantes%}
+              {% for x in morador%}
               <td>{{x}}</td>
               <td>{{x.get_cpf}}</td>
               <td>{{x.get_horario_chegada}}</td>
